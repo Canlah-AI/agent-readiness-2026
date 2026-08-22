@@ -1,0 +1,51 @@
+brand,domain,vertical,reachable,home_status,ucp,ucp_issuer,ucp_issuer_evidence,ucp_version,agent_payments,llms_txt,ai_plugin,mcp,robots_found,ai_agents_named,ai_agents_blocked,org_schema,product_schema_home,faq_schema,product_schema_pdp,review_schema_pdp,faq_schema_pdp
+Anker,www.anker.com,3C accessories,true,200,true,Shopify,myshopify host hint at collection 2026-08,2026-04-08,false,true,false,false,true,0,0,false,false,false,true,false,true
+Soundcore,www.soundcore.com,Audio,true,200,true,Shopify,myshopify host hint at collection 2026-08,2026-04-08,false,true,false,false,true,0,0,true,false,false,false,false,false
+eufy,www.eufy.com,Smart home,true,200,true,Shopify,myshopify host hint at collection 2026-08,2026-04-08,false,true,false,false,true,0,0,false,false,false,true,true,false
+EcoFlow,www.ecoflow.com,Portable power,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+Jackery,www.jackery.com,Portable power,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,4,0,true,false,false,false,false,false
+BLUETTI,www.bluettipower.com,Portable power,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+Insta360,www.insta360.com,Imaging,true,200,false,,,,false,false,true,true,true,0,0,false,false,false,false,false,false
+DJI,www.dji.com,Imaging,true,200,false,,,,false,false,false,false,true,0,0,false,false,false,false,false,false
+SmallRig,www.smallrig.com,Imaging accessories,true,200,false,,,,false,false,false,false,true,0,0,false,false,false,false,false,false
+Ugreen,www.ugreen.com,3C accessories,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+Baseus,www.baseus.com,3C accessories,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,false,false,true,true,false
+Roborock,us.roborock.com,Cleaning appliances,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+Dreame,www.dreametech.com,Cleaning appliances,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,false,false,false,true,1,1,true,false,false,false,false,false
+Narwal,www.narwal.com,Cleaning appliances,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+Tineco,www.tineco.com,Cleaning appliances,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+Govee,us.govee.com,Smart lighting,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,false,false,false,true,0,0,true,false,false,true,false,true
+Aqara,www.aqara.com,Smart home,true,200,false,,,,false,false,false,false,true,0,0,false,false,false,false,false,false
+SwitchBot,www.switch-bot.com,Smart home,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+Laifen,www.laifentech.com,Personal care,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,false,false,true,true,false
+Dreo,www.dreo.com,Home appliances,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,false,false,true,false,false
+Segway,store.segway.com,Mobility,true,200,false,,,,false,false,false,false,false,0,0,false,false,false,false,false,false
+Shokz,shokz.com,Audio,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+EDIFIER,www.edifier.com,Audio,true,200,false,,,,false,false,false,false,true,0,0,false,false,false,false,false,false
+1MORE,www.1more.com,Audio,true,200,false,,,,false,false,false,false,true,0,0,false,false,false,false,false,false
+Lenovo,www.lenovo.com,IT,false,403,false,,,,false,false,false,false,false,0,0,false,false,false,false,false,false
+SHEIN,us.shein.com,Apparel,true,200,false,,,,false,true,false,false,true,0,0,false,false,false,false,false,false
+Temu,www.temu.com,General merchandise,true,200,false,,,,false,false,false,false,true,8,0,false,false,false,false,false,false
+Cider,www.shopcider.com,Apparel,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+Halara,thehalara.com,Apparel,true,200,false,,,,false,true,false,false,true,0,0,true,false,false,false,false,false
+Cupshe,www.cupshe.com,Apparel,true,200,false,,,,false,true,false,false,true,0,0,true,true,false,false,false,false
+Urbanic,www.urbanic.com,Apparel,false,471,false,,,,false,false,false,false,false,0,0,false,false,false,false,false,false
+Quince,www.quince.com,Apparel,true,200,false,,,,false,false,false,false,true,5,0,false,false,false,false,false,true
+Oladance,www.oladance.com,Audio,false,404,false,,,,false,true,false,false,true,0,0,false,false,false,false,false,false
+VESSI,vessi.com,Footwear,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+Chuwi,www.chuwi.com,IT,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+Xreal,www.xreal.com,AR,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+Rokid,global.rokid.com,AR,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+AGM,www.agmmobile.com,Mobile phones,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,true,false,false
+Oukitel,www.oukitel.com,Mobile phones,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,false,false,false,false,false,false
+Hohem,www.hohem.com,Imaging accessories,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+Zhiyun,www.zhiyun-tech.com,Imaging accessories,true,200,false,,,,false,false,false,false,true,0,0,false,false,false,false,false,false
+Creality,www.creality.com,3D printing,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,true,false,false
+Elegoo,www.elegoo.com,3D printing,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,5,5,false,false,false,false,false,false
+Bambu Lab,bambulab.com,3D printing,true,200,false,,,,false,false,false,false,true,0,0,true,false,false,false,false,false
+ATOMSTACK,www.atomstack.com,Laser tools,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,false,false,false,false,false
+XTOOL,www.xtool.com,Laser tools,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,false,false,false,false,false
+Oclean,www.oclean.com,Personal care,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,true,false,true,true,false
+Renpho,www.renpho.com,Health,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,true,true,false,false,false
+Wyze,www.wyze.com,Smart home,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,5,0,false,false,false,false,false,false
+VTOMAN,vtoman.com,Portable power,true,200,true,Shopify,live powered-by header 2026-08-21,2026-04-08,false,true,false,false,true,0,0,true,false,false,false,false,false
