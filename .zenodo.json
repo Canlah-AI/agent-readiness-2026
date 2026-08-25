@@ -4,15 +4,40 @@
   "version": "1.0.0",
   "publication_date": "2026-08-21",
   "creators": [
-    {"name": "Pang, Haoyang", "affiliation": "Canlah AI"}
+    {
+      "name": "Pang, Haoyang",
+      "affiliation": "Canlah AI",
+      "orcid": "0009-0009-7039-0394"
+    }
   ],
   "license": "cc-by-4.0",
   "access_right": "open",
   "language": "eng",
-  "keywords": ["agentic commerce", "UCP", "Universal Commerce Protocol", "MCP", "llms.txt", "generative engine optimization", "DTC e-commerce", "Shopify"],
-  "related_identifiers": [
-    {"identifier": "https://canlah.ai/data/agent-readiness-2026/", "relation": "isIdenticalTo", "resource_type": "dataset"},
-    {"identifier": "https://huggingface.co/datasets/Canlah-AI/agent-readiness-2026", "relation": "isIdenticalTo", "resource_type": "dataset"}
+  "keywords": [
+    "agentic commerce",
+    "UCP",
+    "Universal Commerce Protocol",
+    "MCP",
+    "llms.txt",
+    "generative engine optimization",
+    "DTC e-commerce",
+    "Shopify"
   ],
-  "communities": [{"identifier": "opendata"}]
+  "related_identifiers": [
+    {
+      "identifier": "https://canlah.ai/data/agent-readiness-2026/",
+      "relation": "isIdenticalTo",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://huggingface.co/datasets/Canlah-AI/agent-readiness-2026",
+      "relation": "isIdenticalTo",
+      "resource_type": "dataset"
+    }
+  ],
+  "communities": [
+    {
+      "identifier": "opendata"
+    }
+  ]
 }
