@@ -17,6 +17,11 @@ keywords:
   - generative engine optimization
   - DTC e-commerce
   - Shopify
+identifiers:
+  - type: swh
+    value: "swh:1:dir:d14734936dec4add414c537398d7d5d7b133c1ac"
+  - type: url
+    value: "https://huggingface.co/datasets/CanlahAI/agent-readiness-2026"
 authors:
   - name: "Canlah AI"
     website: "https://canlah.ai"

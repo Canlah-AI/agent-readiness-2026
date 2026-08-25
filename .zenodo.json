@@ -30,7 +30,7 @@
       "resource_type": "dataset"
     },
     {
-      "identifier": "https://huggingface.co/datasets/Canlah-AI/agent-readiness-2026",
+      "identifier": "https://huggingface.co/datasets/CanlahAI/agent-readiness-2026",
       "relation": "isIdenticalTo",
       "resource_type": "dataset"
     }
