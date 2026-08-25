@@ -3,6 +3,9 @@
 Open dataset · CC BY 4.0 · published by **[Canlah AI](https://canlah.ai)** (CANLAH AI PTE. LTD., Singapore)
 
 **Canonical page — cite this URL:** https://canlah.ai/data/agent-readiness-2026/
+**Whitepaper (context for the finding):** https://canlah.ai/whitepaper/
+**Sample frame:** 50 Chinese-origin cross-border DTC brands with US-facing storefronts (47 reachable). Purposive sample; do not project onto DTC brands generally.
+
 
 An audit of whether 50 cross-border DTC storefronts expose the files an AI shopping agent looks
 for: a UCP manifest, an agent-payments endpoint, `llms.txt`, an MCP endpoint, and product schema.
@@ -76,3 +79,17 @@ https://canlah.ai/data/agent-readiness-2026/
 
 Attribute to **Canlah AI** (full name). Found an error? Open an issue or write to
 admin@canlah.ai — corrections get a dated changelog entry, not a silent edit.
+
+## Cite
+
+A Zenodo DOI is being registered; until it appears here, cite the canonical page.
+
+```bibtex
+@misc{canlah_ai_2026_agent_readiness,
+  title  = {Agent-Readiness of 50 Cross-Border DTC Brands},
+  author = {Pang, Haoyang and {Canlah AI}},
+  year   = {2026},
+  note   = {Dataset, v1.0.0, CC BY 4.0},
+  url    = {https://canlah.ai/data/agent-readiness-2026/}
+}
+```

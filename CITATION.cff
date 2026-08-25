@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+title: "Agent-Readiness of 50 Cross-Border DTC Brands (2026)"
+abstract: "Audit of machine-readable agent-readiness signals (UCP manifest, agent-payments endpoint, MCP endpoint, llms.txt, robots.txt AI-crawler directives, schema.org Product) on the owned storefronts of 50 Chinese-origin cross-border DTC brands with US-facing storefronts (47 reachable). 25 of 25 UCP manifests found at collection (2026-08) were Shopify-issued: 22 confirmed live by powered-by header on 2026-08-21, 3 (Anker, Soundcore, eufy) no longer served and attributed by collection-time *.myshopify.com host hint."
+version: 1.0.0
+date-released: 2026-08-21
+license: CC-BY-4.0
+url: "https://canlah.ai/data/agent-readiness-2026/"
+repository-code: "https://github.com/Canlah-AI/agent-readiness-2026"
+keywords:
+  - agentic commerce
+  - UCP
+  - Universal Commerce Protocol
+  - MCP
+  - llms.txt
+  - generative engine optimization
+  - DTC e-commerce
+  - Shopify
+authors:
+  - name: "Canlah AI"
+    website: "https://canlah.ai"
+  - family-names: Pang
+    given-names: Haoyang
+    affiliation: "Canlah AI"
