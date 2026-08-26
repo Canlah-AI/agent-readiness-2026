@@ -6,6 +6,7 @@ abstract: "Audit of machine-readable agent-readiness signals (UCP manifest, agen
 version: 1.0.0
 date-released: 2026-08-21
 license: CC-BY-4.0
+doi: 10.5281/zenodo.22103178
 url: "https://canlah.ai/data/agent-readiness-2026/"
 repository-code: "https://github.com/Canlah-AI/agent-readiness-2026"
 keywords:
@@ -18,6 +19,8 @@ keywords:
   - DTC e-commerce
   - Shopify
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22103178
   - type: swh
     value: "swh:1:dir:d14734936dec4add414c537398d7d5d7b133c1ac"
   - type: url
