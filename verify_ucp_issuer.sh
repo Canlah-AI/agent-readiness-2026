@@ -12,14 +12,32 @@ CSV="${1:-dataset.csv}"
 UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
 
 printf '%-14s %-28s %s\n' BRAND DOMAIN RESULT
-shopify=0; other=0; gone=0
-while IFS=, read -r brand domain _rest; do
+shopify=0; other=0; gone=0; unreachable=0; n=0
+# 按列位读到第 6 列 ucp。不要用 `case ",$_rest," in *",true,"*` 去猜:
+# dataset.csv 有 22 列、十余列是布尔,那种写法会命中任意一列的 true(实测选中 48 行而非 25)。
+while IFS=, read -r brand domain vertical reachable home_status ucp _rest; do
   [ "$brand" = "brand" ] && continue
-  case ",$_rest," in *",true,"*) : ;; *) continue ;; esac   # 只测 ucp=true 的行
-  hdr=$(curl -s -m 12 -A "$UA" -L -D- -o /dev/null "https://$domain/.well-known/ucp.json" || true)
-  if grep -qi 'powered-by: Shopify' <<<"$hdr"; then r="Shopify (live header)"; shopify=$((shopify+1))
-  elif grep -qc '^HTTP.* 200' <<<"$hdr" >/dev/null && grep -q '^HTTP.* 200' <<<"$hdr"; then r="200, no Shopify header"; other=$((other+1))
-  else r="no longer served"; gone=$((gone+1)); fi
+  [ "$ucp" = "true" ] || continue
+  n=$((n+1))
+  # 网络故障必须与「站点真的不再提供该路径」分开计数,否则一次超时会被记成一次下线,
+  # 让复现者拿到一个看起来像结论、实际是本地网络噪声的数字。
+  if hdr=$(curl -sS -m 12 -A "$UA" -L -D- -o /dev/null "https://$domain/.well-known/ucp.json" 2>/dev/null); then
+    if grep -qi 'powered-by: Shopify' <<<"$hdr"; then
+      r="Shopify (live header)"; shopify=$((shopify+1))
+    elif grep -q '^HTTP.* 200' <<<"$hdr"; then
+      r="200, no Shopify header"; other=$((other+1))
+    else
+      r="no longer served"; gone=$((gone+1))
+    fi
+  else
+    r="UNREACHABLE (network/TLS error — not a finding)"; unreachable=$((unreachable+1))
+  fi
   printf '%-14s %-28s %s\n' "$brand" "$domain" "$r"
 done < "$CSV"
-printf '\nShopify header: %s | 200 without it: %s | gone: %s\n' "$shopify" "$other" "$gone"
+printf '\nrows tested: %s (expected 25)\n' "$n"
+printf 'Shopify header: %s | 200 without it: %s | gone: %s | unreachable: %s\n' \
+  "$shopify" "$other" "$gone" "$unreachable"
+printf '\nPublished run (2026-08-20): Shopify 22 | 200 without it 0 | gone 3 | unreachable 0\n'
+printf 'The 3 "gone" are Anker / Soundcore / eufy; their collection-time host hints were *.myshopify.com.\n'
+printf 'Live re-runs drift: sites add and drop /.well-known/ucp.json over time. A row moving between\n'
+printf 'Shopify and "gone" is a real-world change; any row landing in UNREACHABLE is YOUR network, not data.\n'
