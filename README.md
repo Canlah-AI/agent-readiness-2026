@@ -2,9 +2,9 @@
 
 Open dataset · CC BY 4.0 · published by **[Canlah AI](https://canlah.ai)** (CANLAH AI PTE. LTD., Singapore)
 
-**Canonical page — cite this URL:** https://canlah.ai/data/agent-readiness-2026/
-**DOI (Zenodo):** https://doi.org/10.5281/zenodo.22103178
-**Whitepaper (context for the finding):** https://canlah.ai/whitepaper/
+**Canonical citation — cite the DOI:** https://doi.org/10.5281/zenodo.22103178
+**Repository:** https://github.com/Canlah-AI/agent-readiness-2026
+**Mirror:** https://huggingface.co/datasets/CanlahAI/agent-readiness-2026
 **Mirror (Hugging Face):** https://huggingface.co/datasets/CanlahAI/agent-readiness-2026
 **Archive (Software Heritage):** swh:1:dir:d14734936dec4add414c537398d7d5d7b133c1ac
 **Sample frame:** 50 Chinese-origin cross-border DTC brands with US-facing storefronts (47 reachable). Purposive sample; do not project onto DTC brands generally.
@@ -76,8 +76,8 @@ at that path at all, but their collection-time host hints were `*.myshopify.com`
 ## Citation
 
 ```
-Canlah AI (2026). Agent-Readiness of 50 Cross-Border DTC Brands. Dataset.
-https://canlah.ai/data/agent-readiness-2026/
+Pang, H. (2026). Agent-Readiness of 50 Cross-Border DTC Brands. Dataset.
+https://doi.org/10.5281/zenodo.22103178
 ```
 
 Attribute to **Canlah AI** (full name). Found an error? Open an issue or write to
@@ -94,6 +94,6 @@ admin@canlah.ai — corrections get a dated changelog entry, not a silent edit.
   year   = {2026},
   note   = {Dataset, v1.0.0, CC BY 4.0},
   doi    = {10.5281/zenodo.22103178},
-  url    = {https://canlah.ai/data/agent-readiness-2026/}
+  url    = {https://doi.org/10.5281/zenodo.22103178}
 }
 ```
