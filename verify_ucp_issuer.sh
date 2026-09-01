@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 # 复核 UCP manifest 到底是谁派发的 —— 这份数据集最核心的那一列就是这么来的。
 #
-# 为什么需要它:原始采集只有在 host hint 泄漏出 *.myshopify.com 时才敢标 "Shopify",
-# 那是 25 家里的 3 家,严重低估 —— Shopify 店挂自有域名时 host hint 什么都不漏。
-# 改读 powered-by 响应头之后,22 家直接自报 Shopify;剩下 3 家该路径已下线,
-# 但采集时的 host hint 正是 *.myshopify.com。合计 25/25。
+# ⚠️ v1.0.2 更正（2026-09-01）:此脚本此前探测 /.well-known/ucp.json,而采集管线探测的是
+# /.well-known/ucp(无扩展名)。两者不等价:Shopify 边缘对 .json 有 catch-all 会一并应答,
+# 自建前端(Netlify/Next.js)则只应答无扩展名那条。于是三家自建前端的品牌被误判成
+# 「manifest 已下线」,并由此推出「~12% churn」。两条结论都已撤回,见 ERRATUM.md。
+# 本脚本现在探测与采集一致的路径,并直接读 manifest 正文判定派发方。
 #
 # 用法: ./verify_ucp_issuer.sh [dataset.csv]
 set -euo pipefail
 CSV="${1:-dataset.csv}"
 UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+TMP="$(mktemp)"; trap 'rm -f "$TMP"' EXIT
 
-printf '%-14s %-28s %s\n' BRAND DOMAIN RESULT
+printf '%-14s %-26s %-10s %s\n' BRAND DOMAIN VERSION RESULT
 shopify=0; other=0; gone=0; unreachable=0; n=0
 # 按列位读到第 6 列 ucp。不要用 `case ",$_rest," in *",true,"*` 去猜:
 # dataset.csv 有 22 列、十余列是布尔,那种写法会命中任意一列的 true(实测选中 48 行而非 25)。
@@ -19,25 +21,25 @@ while IFS=, read -r brand domain vertical reachable home_status ucp _rest; do
   [ "$brand" = "brand" ] && continue
   [ "$ucp" = "true" ] || continue
   n=$((n+1))
-  # 网络故障必须与「站点真的不再提供该路径」分开计数,否则一次超时会被记成一次下线,
-  # 让复现者拿到一个看起来像结论、实际是本地网络噪声的数字。
-  if hdr=$(curl -sS -m 12 -A "$UA" -L -D- -o /dev/null "https://$domain/.well-known/ucp.json" 2>/dev/null); then
-    if grep -qi 'powered-by: Shopify' <<<"$hdr"; then
-      r="Shopify (live header)"; shopify=$((shopify+1))
-    elif grep -q '^HTTP.* 200' <<<"$hdr"; then
-      r="200, no Shopify header"; other=$((other+1))
+  # 网络故障必须与「站点真的不再提供该路径」分开计数,否则一次超时会被记成一次下线。
+  if curl -sS -m 20 -A "$UA" -L -o "$TMP" -w '' "https://$domain/.well-known/ucp" 2>/dev/null; then
+    ver=$(grep -oE '"version"[: ]*"[0-9]{4}-[0-9]{2}-[0-9]{2}"' "$TMP" | head -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' || true)
+    if [ -s "$TMP" ] && grep -q 'myshopify\.com' "$TMP"; then
+      r="Shopify-issued (myshopify.com in manifest)"; shopify=$((shopify+1))
+    elif [ -s "$TMP" ]; then
+      r="served, not Shopify-issued"; other=$((other+1))
     else
       r="no longer served"; gone=$((gone+1))
     fi
   else
-    r="UNREACHABLE (network/TLS error — not a finding)"; unreachable=$((unreachable+1))
+    r="UNREACHABLE (network/TLS error — not a finding)"; unreachable=$((unreachable+1)); ver=""
   fi
-  printf '%-14s %-28s %s\n' "$brand" "$domain" "$r"
+  printf '%-14s %-26s %-10s %s\n' "$brand" "$domain" "${ver:-?}" "$r"
 done < "$CSV"
 printf '\nrows tested: %s (expected 25)\n' "$n"
-printf 'Shopify header: %s | 200 without it: %s | gone: %s | unreachable: %s\n' \
+printf 'Shopify-issued: %s | served, not Shopify: %s | no longer served: %s | unreachable: %s\n' \
   "$shopify" "$other" "$gone" "$unreachable"
-printf '\nPublished run (2026-08-20): Shopify 22 | 200 without it 0 | gone 3 | unreachable 0\n'
-printf 'The 3 "gone" are Anker / Soundcore / eufy; their collection-time host hints were *.myshopify.com.\n'
-printf 'Live re-runs drift: sites add and drop /.well-known/ucp.json over time. A row moving between\n'
-printf 'Shopify and "gone" is a real-world change; any row landing in UNREACHABLE is YOUR network, not data.\n'
+printf '\nPublished run (2026-08-11 collection): 25 of 25 Shopify-issued.\n'
+printf 'Re-run 2026-09-01: 25/25 still served and still Shopify-issued; manifest versions split\n'
+printf '22 on 2026-08-25 and 3 (Anker, Soundcore, eufy) still on 2026-04-08.\n'
+printf 'A row landing in UNREACHABLE is YOUR network, not data.\n'

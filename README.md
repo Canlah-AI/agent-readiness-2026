@@ -2,7 +2,12 @@
 
 Open dataset · CC BY 4.0 · published by **[Canlah AI](https://canlah.ai)** (CANLAH AI PTE. LTD., Singapore)
 
-**Canonical citation — cite the DOI:** https://doi.org/10.5281/zenodo.22103178
+**Canonical citation — cite the DOI:** https://doi.org/10.5281/zenodo.22103177
+
+> ⚠️ **v1.0.2 (2026-09-01) withdraws two claims from earlier versions** — that three manifests had
+> gone dark, and a ~12% churn rate derived from them. Both were an artifact of this repo's
+> verification script probing the wrong path. The headline finding (25/25 platform-issued)
+> survives and is now better evidenced. Full account: [**ERRATUM.md**](ERRATUM.md).
 **Repository:** https://github.com/Canlah-AI/agent-readiness-2026
 **Mirror:** https://huggingface.co/datasets/CanlahAI/agent-readiness-2026
 **Mirror (Hugging Face):** https://huggingface.co/datasets/CanlahAI/agent-readiness-2026
@@ -37,9 +42,16 @@ The original collection could only label a manifest "Shopify" when the host hint
 `*.myshopify.com` address — **3 of 25**, which under-reports badly, because a Shopify store on a
 custom domain leaks nothing.
 
-On **2026-08-21** every one of the 25 manifests was re-requested and the `powered-by` response
-header read: **22 answered `Shopify`**. The remaining 3 (Anker, Soundcore, eufy) no longer answer
-at that path at all, but their collection-time host hints were `*.myshopify.com`. That is 25 of 25.
+On **2026-09-01** every one of the 25 manifests was re-requested at the same path the collection
+pipeline used, and the manifest *body* was read rather than a response header: **25 of 25 are still
+served, and all 25 cite a `*.myshopify.com` address inside the manifest itself.** That is 25 of 25,
+now evidenced by live content rather than by a collection-time host hint.
+
+> ⚠️ **This paragraph previously said 3 of them (Anker, Soundcore, eufy) "no longer answer at that
+> path at all," and a related note reported ~12% churn. Both were wrong** — an artifact of this
+> repository's verification script probing `/.well-known/ucp.json` while the collection pipeline
+> probed `/.well-known/ucp`. Shopify's edge answers both; a self-hosted front end answers only the
+> latter. See [ERRATUM.md](ERRATUM.md).
 
 `verify_ucp_issuer.sh` in this repo re-runs that check. It needs nothing but `curl`.
 
@@ -66,8 +78,11 @@ at that path at all, but their collection-time host hints were `*.myshopify.com`
 
 - **n = 50, purposively sampled** from cross-border DTC brands selling into the US. Not a random
   sample. Do not project it onto DTC generally.
-- **A single point in time.** Three manifests went dark between collection and re-verification —
-  roughly 12% churn in weeks, which is itself a finding.
+- **A single point in time.** We previously reported ~12% manifest churn here; that figure has
+  been **withdrawn** (see [ERRATUM.md](ERRATUM.md)). Re-checked 2026-09-01, manifest presence has
+  not churned at all: 25 of 25 are still served. What *did* change is the manifest version — 22 of
+  25 moved to `2026-08-25` while 3 remain on `2026-04-08`. Boolean presence columns cannot see
+  that, which is a limitation of this dataset's shape, not evidence of stability.
 - **Presence of a file is not quality of a file.** We did not evaluate whether the manifests
   describe the catalogue well.
 - This measures what a storefront *exposes*. It does **not** measure whether any AI agent actually
